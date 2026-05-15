@@ -4,3 +4,12 @@ GET {{PcWarehoseApi_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
+
+### Get all pcs
+GET {{PcWarehoseApi_HostAddress}}/api/pcs
+
+### Get pc with components
+GET {{PcWarehoseApi_HostAddress}}/api/pcs/1/components
+
+### Get non-existing pc with components
+GET {{PcWarehoseApi_HostAddress}}/api/pcs/999/components

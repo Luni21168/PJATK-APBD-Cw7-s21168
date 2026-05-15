@@ -1,0 +1,34 @@
+GET http://localhost:5149/api/pcs/999/components
+User-Agent: IntelliJ HTTP Client/JetBrains Rider 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-05-14T141500.404.json
+
+###
+
+GET http://localhost:5149/api/pcs/1/components
+User-Agent: IntelliJ HTTP Client/JetBrains Rider 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-05-14T141454.200.json
+
+###
+
+GET http://localhost:5149/api/pcs
+User-Agent: IntelliJ HTTP Client/JetBrains Rider 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-05-14T141438.200.json
+
+###
+
+GET http://localhost:5149/weatherforecast/
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/JetBrains Rider 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+###
+

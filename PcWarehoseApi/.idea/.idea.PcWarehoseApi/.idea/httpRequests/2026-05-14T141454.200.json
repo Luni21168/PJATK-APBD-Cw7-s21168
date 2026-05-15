@@ -1,0 +1,67 @@
+{
+  "id": 1,
+  "name": "Gaming Beast X",
+  "weight": 12.5,
+  "warranty": 36,
+  "createdAt": "2026-05-08T09:00:00",
+  "stock": 5,
+  "components": [
+    {
+      "amount": 1,
+      "component": {
+        "code": "CPU0000001",
+        "name": "Ryzen 7 7800X3D",
+        "description": "8-core gaming processor",
+        "manufacturer": {
+          "id": 1,
+          "abbreviation": "AMD",
+          "fullName": "Advanced Micro Devices",
+          "foundationDate": "1969-05-01"
+        },
+        "type": {
+          "id": 1,
+          "abbreviation": "CPU",
+          "name": "Processor"
+        }
+      }
+    },
+    {
+      "amount": 1,
+      "component": {
+        "code": "GPU0000001",
+        "name": "RTX 4080 Super",
+        "description": "High-end gaming graphics card",
+        "manufacturer": {
+          "id": 2,
+          "abbreviation": "NVI",
+          "fullName": "NVIDIA Corporation",
+          "foundationDate": "1993-04-05"
+        },
+        "type": {
+          "id": 2,
+          "abbreviation": "GPU",
+          "name": "Graphics Card"
+        }
+      }
+    },
+    {
+      "amount": 2,
+      "component": {
+        "code": "RAM0000001",
+        "name": "Corsair Vengeance DDR5 16GB",
+        "description": "DDR5 RAM module 16GB",
+        "manufacturer": {
+          "id": 3,
+          "abbreviation": "COR",
+          "fullName": "Corsair Gaming Inc.",
+          "foundationDate": "1994-01-01"
+        },
+        "type": {
+          "id": 3,
+          "abbreviation": "RAM",
+          "name": "Memory"
+        }
+      }
+    }
+  ]
+}
