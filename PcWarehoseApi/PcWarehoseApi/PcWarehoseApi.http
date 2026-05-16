@@ -26,3 +26,15 @@ Content-Type: application/json
   "createdAt": "2026-05-08T09:00:00",
   "stock": 5
 }
+
+### Update pc
+PUT {{PcWarehoseApi_HostAddress}}/api/pcs/1
+Content-Type: application/json
+
+{
+  "name": "Gaming Beast X Updated",
+  "weight": 13.0,
+  "warranty": 48,
+  "createdAt": "2026-05-08T09:00:00",
+  "stock": 7
+}

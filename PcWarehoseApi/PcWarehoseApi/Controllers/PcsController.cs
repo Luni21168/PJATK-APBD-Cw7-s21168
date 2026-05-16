@@ -155,4 +155,63 @@ public class PcsController : ControllerBase
         return CreatedAtAction(nameof(GetByIdWithComponents), new { id = pc.Id }, result);
     }
     
+    [HttpPut("{id:int}")]
+    public async Task<ActionResult> Update([FromRoute] int id, [FromBody] UpsertPcDto request)
+    {
+        if (string.IsNullOrWhiteSpace(request.Name))
+        {
+            return BadRequest(new ErrorResponseDto
+            {
+                Message = "Name is required."
+            });
+        }
+
+        if (request.Weight <= 0)
+        {
+            return BadRequest(new ErrorResponseDto
+            {
+                Message = "Weight must be greater than 0."
+            });
+        }
+
+        if (request.Warranty < 0)
+        {
+            return BadRequest(new ErrorResponseDto
+            {
+                Message = "Warranty cannot be negative."
+            });
+        }
+
+        if (request.Stock < 0)
+        {
+            return BadRequest(new ErrorResponseDto
+            {
+                Message = "Stock cannot be negative."
+            });
+        }
+
+        var pc = await _context.PCs.FirstOrDefaultAsync(p => p.Id == id);
+
+        if (pc == null)
+        {
+            return NotFound(new ErrorResponseDto
+            {
+                Message = $"PC with id {id} was not found."
+            });
+        }
+
+        pc.Name = request.Name;
+        pc.Weight = request.Weight;
+        pc.Warranty = request.Warranty;
+        pc.CreatedAt = request.CreatedAt;
+        pc.Stock = request.Stock;
+
+        await _context.SaveChangesAsync();
+
+        return Ok(new
+        {
+            Message = "PC updated successfully."
+        });
+    }
+    
 }
