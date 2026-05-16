@@ -214,4 +214,33 @@ public class PcsController : ControllerBase
         });
     }
     
+    [HttpDelete("{id:int}")]
+    public async Task<ActionResult> Delete([FromRoute] int id)
+    {
+        var pc = await _context.PCs
+            .Include(p => p.PCComponents)
+            .FirstOrDefaultAsync(p => p.Id == id);
+
+        if (pc == null)
+        {
+            return NotFound(new ErrorResponseDto
+            {
+                Message = $"PC with id {id} was not found."
+            });
+        }
+
+        if (pc.PCComponents.Any())
+        {
+            return Conflict(new ErrorResponseDto
+            {
+                Message = "Cannot delete PC because it has assigned components."
+            });
+        }
+
+        _context.PCs.Remove(pc);
+        await _context.SaveChangesAsync();
+
+        return NoContent();
+    }
+    
 }

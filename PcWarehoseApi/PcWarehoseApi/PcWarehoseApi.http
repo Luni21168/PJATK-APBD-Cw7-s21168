@@ -38,3 +38,9 @@ Content-Type: application/json
   "createdAt": "2026-05-08T09:00:00",
   "stock": 7
 }
+
+### Delete pc without components
+DELETE {{PcWarehoseApi_HostAddress}}/api/pcs/999
+
+### Delete existing pc
+DELETE {{PcWarehoseApi_HostAddress}}/api/pcs/1
