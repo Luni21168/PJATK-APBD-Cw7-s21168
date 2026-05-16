@@ -13,3 +13,16 @@ GET {{PcWarehoseApi_HostAddress}}/api/pcs/1/components
 
 ### Get non-existing pc with components
 GET {{PcWarehoseApi_HostAddress}}/api/pcs/999/components
+
+
+### Create pc
+POST {{PcWarehoseApi_HostAddress}}/api/pcs
+Content-Type: application/json
+
+{
+  "name": "Gaming Beast X",
+  "weight": 12.5,
+  "warranty": 36,
+  "createdAt": "2026-05-08T09:00:00",
+  "stock": 5
+}

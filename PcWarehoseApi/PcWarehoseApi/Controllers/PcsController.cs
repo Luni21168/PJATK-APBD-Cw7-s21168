@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using PcWarehoseApi.DTOs;
 using PcWarehouseApi.Data;
 using PcWarehouseApi.DTOs;
 
@@ -93,4 +94,65 @@ public class PcsController : ControllerBase
 
         return Ok(result);
     }
+    
+    [HttpPost]
+    public async Task<ActionResult<PcListDto>> Create([FromBody] UpsertPcDto request)
+    {
+        if (string.IsNullOrWhiteSpace(request.Name))
+        {
+            return BadRequest(new ErrorResponseDto
+            {
+                Message = "Name is required."
+            });
+        }
+
+        if (request.Weight <= 0)
+        {
+            return BadRequest(new ErrorResponseDto
+            {
+                Message = "Weight must be greater than 0."
+            });
+        }
+
+        if (request.Warranty < 0)
+        {
+            return BadRequest(new ErrorResponseDto
+            {
+                Message = "Warranty cannot be negative."
+            });
+        }
+
+        if (request.Stock < 0)
+        {
+            return BadRequest(new ErrorResponseDto
+            {
+                Message = "Stock cannot be negative."
+            });
+        }
+
+        var pc = new Models.PC
+        {
+            Name = request.Name,
+            Weight = request.Weight,
+            Warranty = request.Warranty,
+            CreatedAt = request.CreatedAt,
+            Stock = request.Stock
+        };
+
+        _context.PCs.Add(pc);
+        await _context.SaveChangesAsync();
+
+        var result = new PcListDto
+        {
+            Id = pc.Id,
+            Name = pc.Name,
+            Weight = pc.Weight,
+            Warranty = pc.Warranty,
+            CreatedAt = pc.CreatedAt,
+            Stock = pc.Stock
+        };
+
+        return CreatedAtAction(nameof(GetByIdWithComponents), new { id = pc.Id }, result);
+    }
+    
 }
